@@ -130,7 +130,7 @@ export const LIKES = ["drawing", "hiking", "badminton", "djing", "dancing", "wri
 
 export const LINKS = [
   { label: "GitHub", handle: "SaniyaZahir", href: "https://github.com/SaniyaZahir" },
-  { label: "LinkedIn", handle: "melody-z", href: "https://www.linkedin.com/in/melody-z-75b710245" },
+  { label: "LinkedIn", handle: "melody-zahir", href: "https://www.linkedin.com/in/melody-zahir" },
   { label: "Instagram", handle: "@melody.zhrr", href: "https://www.instagram.com/melody.zhrr/" },
   { label: "X", handle: "@melodyzheir", href: "https://x.com/melodyzheir" },
 ];

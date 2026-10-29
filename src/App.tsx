@@ -1,19 +1,18 @@
 import { useEffect } from "react";
 import Header, { SECTIONS } from "./components/Header";
 import Scope from "./components/Scope";
-import Card from "./components/Row";
+import Section from "./components/Row";
 import Mixer from "./components/Mixer";
 import Ticker from "./components/Ticker";
 import Skills from "./components/Skills";
-import { Contact, Inspire, Projects, Wins, Work } from "./components/Sections";
-import { useReducedMotion, useTorontoTime } from "./hooks";
+import { Contact, Projects, Wins, Work } from "./components/Sections";
+import { useReducedMotion } from "./hooks";
 import { LINKS } from "./data";
 
 export default function App() {
-  const time = useTorontoTime();
   const reduced = useReducedMotion();
 
-  // keys 1–5 jump between sections
+  // number keys jump between sections
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -26,70 +25,59 @@ export default function App() {
   }, [reduced]);
 
   return (
-    <div className="gutter mx-auto max-w-[880px] pb-8">
+    <div className="gutter mx-auto max-w-[720px] pb-16 text-[16px] leading-relaxed">
       <Header />
 
-      <main className="flex flex-col gap-3.5">
-        <section id="top" className="scroll-mt-24 rounded-[22px] border border-rule bg-card p-5 sm:p-8">
-          <div className="flex flex-wrap gap-2">
-            {["Toronto, ON", "Software Engineering @ McMaster", `${time} local`].map((t) => (
-              <span key={t} className="rounded-full border border-rule bg-raise px-3 py-1 text-[13px] tabular-nums text-dim">
-                {t}
-              </span>
-            ))}
-          </div>
-          <h1 className="m-0 mt-6 text-[clamp(40px,7vw,68px)] font-semibold leading-[1] tracking-[-.04em]">
+      <main>
+        <section id="top" className="pt-20">
+          <h1 className="m-0 text-[clamp(34px,6vw,48px)] font-semibold leading-[1.1] tracking-[-.02em]">
             hi, i'm melody<span className="text-pink-deep">.</span>
           </h1>
-          <p className="m-0 mt-3 text-[clamp(19px,2.4vw,24px)] leading-snug tracking-[-.015em] text-dim">
-            i build software and add my <em className="mark tracking-normal">creative touch</em> to things.
+          <p className="m-0 mt-4 max-w-[52ch] text-[18px] text-dim">
+            I build software and add my creative touch to things. Software Engineering at McMaster, based in Toronto.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {LINKS.map((l, i) => (
+          <p className="m-0 mt-4 max-w-[52ch] text-[18px]">
+            What drives me: building and shipping features used by millions.
+          </p>
+          <p className="m-0 mt-6 flex flex-wrap gap-x-5 gap-y-1">
+            {LINKS.map((l) => (
               <a
                 key={l.label}
                 href={l.href}
                 target="_blank"
                 rel="noopener"
-                className={`rounded-xl px-3.5 py-2 text-sm font-medium no-underline transition-colors ${
-                  i === 0 ? "bg-ink text-paper hover:bg-brown" : "border border-rule hover:border-pink-deep hover:bg-raise"
-                }`}
+                className="underline decoration-rule underline-offset-[3px] hover:decoration-pink-deep"
               >
                 {l.label}
               </a>
             ))}
-          </div>
+          </p>
         </section>
 
-        <Inspire />
         <Work />
         <Projects />
         <Wins />
 
-        <Card eyebrow="Interactive" title={<>Code meets music</>}>
-          <p className="m-0 -mt-2 text-[15px] text-dim">Move across the scope to change the note. Tap to hear it.</p>
+        <Section id="sound" title="Oscilloscope">
+          <p className="m-0 mb-4 text-dim">Move across it to change the note. Click to hear it.</p>
           <Scope />
-        </Card>
+        </Section>
 
-
-        <Card id="stack" eyebrow="Tech stack" title="What I use">
+        <Section id="stack" title="Stack">
           <Mixer />
           <Skills />
-        </Card>
+        </Section>
 
-        <Card eyebrow="Off the clock" title="I also like…" className="overflow-hidden">
-          <div className="-mx-5 sm:-mx-7">
-            <Ticker />
-          </div>
-        </Card>
+        <Section title="Outside of code">
+          <Ticker />
+        </Section>
 
         <Contact />
       </main>
 
-      <footer className="mt-6 flex flex-wrap items-center justify-between gap-2 px-1 text-[13px] text-dim">
-        <span>© 2026 Melody · Toronto {time}</span>
-        <span className="font-mono text-[12px]">~/melody-site/src/App.tsx</span>
-        <a href="#top" className="no-underline hover:text-ink">Back to top ↑</a>
+      <footer className="mt-20 flex flex-wrap justify-between gap-2 border-t border-rule pt-5 text-[14px] text-dim">
+        <span>© 2026 Melody Zahir</span>
+        <a href="#top" className="no-underline hover:text-ink">back to top</a>
       </footer>
     </div>
   );

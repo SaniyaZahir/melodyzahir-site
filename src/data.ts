@@ -121,9 +121,9 @@ export const PROJECTS: Project[] = [
 ];
 
 export const WINS = [
-  { place: "1st", title: "iGEM × Shad @ Mac", sub: "design case competition", year: "2026" },
-  { place: "★", title: "Most Innovative Solution", sub: "iGEMULATE", year: "2026" },
-  { place: "1st", title: "Evolve Hackathon", sub: "University of Toronto", year: "2024" },
+  { year: "2026", text: "1st place, iGEM × Shad @ Mac design case competition" },
+  { year: "2026", text: "Most Innovative Solution, iGEMULATE" },
+  { year: "2024", text: "1st place, Evolve Hackathon at the University of Toronto" },
 ];
 
 export const LIKES = ["drawing", "hiking", "badminton", "djing", "dancing", "writing", "making music"];

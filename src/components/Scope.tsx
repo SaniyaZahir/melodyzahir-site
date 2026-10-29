@@ -138,7 +138,7 @@ export default function Scope() {
   }, [reduced]);
 
   return (
-    <div className="relative mt-4 overflow-hidden rounded-2xl bg-screen ring-1 ring-rule">
+    <div className="relative overflow-hidden rounded-lg bg-screen">
       <span className="pointer-events-none absolute left-3.5 top-2.5 font-mono text-[11px] text-[#A8968E]">
         CH1 <span className="text-trace">●</span> move to tune · tap to play
       </span>

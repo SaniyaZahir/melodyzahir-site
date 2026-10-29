@@ -62,8 +62,8 @@ export default function Mixer() {
 
   return (
     <>
-      <div className="mt-1.5 overflow-x-auto pb-1 [scrollbar-width:thin]">
-        <div className="flex w-max gap-3.5 rounded-2xl border border-rule bg-raise px-3.5 pb-3.5 pt-4">
+      <div className="overflow-x-auto pb-1 [scrollbar-width:thin]">
+        <div className="flex w-max gap-3.5 rounded-lg border border-rule bg-raise px-3.5 pb-3.5 pt-4">
           {STACK.map((bus, b) => (
             <div key={bus.name} className={`flex flex-col gap-2.5 ${b ? "border-l border-rule pl-3.5" : ""}`}>
               <span className="font-mono text-[10.5px] uppercase tracking-[.08em] text-dim">{bus.name}</span>
@@ -84,7 +84,7 @@ export default function Mixer() {
         </div>
       </div>
 
-      <dl aria-live="polite" className="mt-3 grid min-h-[72px] grid-cols-[auto_minmax(0,1fr)] gap-x-3.5 gap-y-0.5 rounded-xl bg-screen px-3.5 py-3 font-mono text-[13px] text-pink">
+      <dl aria-live="polite" className="mt-3 grid min-h-[72px] grid-cols-[auto_minmax(0,1fr)] gap-x-3.5 gap-y-0.5 rounded-md bg-screen px-3.5 py-3 font-mono text-[13px] text-pink">
         <dt className="text-[#8E7D75]">ch</dt><dd className="m-0">{sel.name.toLowerCase()}</dd>
         <dt className="text-[#8E7D75]">bus</dt><dd className="m-0">{sel.bus}</dd>
         <dt className="text-[#8E7D75]">lvl</dt><dd className="m-0">{tier(sel.level)}</dd>
@@ -93,7 +93,7 @@ export default function Mixer() {
       </dl>
 
       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] text-dim">
-        <span>Fader height = how often I reach for it. Tap a channel for details.</span>
+        <span>Fader height is how often I reach for it.</span>
       </div>
     </>
   );

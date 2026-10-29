@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* palette: white · grey · brown · baby pink. stored as rgb triplets so tailwind opacity modifiers work */
+:root {
+  --paper: 247 246 245;
+  --card: 255 255 255;
+  --raise: 247 245 244;
+  --rule: 231 227 225;
+  --dim: 140 131 127;
+  --ink: 59 42 35;
+  --brown: 138 90 68;
+  --pink: 247 198 211;
+  --pink-deep: 226 143 166;
+  --onpink: 59 42 35;
+  --screen: 42 32 28;
+  --trace: 247 198 211;
+  --grat: 64 51 46;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: 22 18 16; --card: 32 26 23; --raise: 40 33 30; --rule: 56 46 42; --dim: 166 154 148; --ink: 243 236 232;
+    --brown: 217 179 160; --pink: 245 191 205; --pink-deep: 240 168 188; --onpink: 59 42 35;
+    --screen: 18 14 12; --trace: 247 198 211; --grat: 46 37 33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: 22 18 16; --card: 32 26 23; --raise: 40 33 30; --rule: 56 46 42; --dim: 166 154 148; --ink: 243 236 232;
+  --brown: 217 179 160; --pink: 245 191 205; --pink-deep: 240 168 188; --onpink: 59 42 35;
+  --screen: 18 14 12; --trace: 247 198 211; --grat: 46 37 33;
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: rgb(var(--paper));
+  }
+  ::selection { background: rgb(var(--pink)); color: rgb(var(--onpink)); }
+  a { text-underline-offset: 3px; }
+  :focus-visible { outline: 1.5px solid rgb(var(--pink-deep)); outline-offset: 3px; }
+}
+
+@layer components {
+  .gutter {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  /* highlighter stroke behind italic words */
+  .mark {
+    @apply font-serif italic font-normal text-brown;
+    background: linear-gradient(transparent 62%, rgb(var(--pink) / 0.75) 62%);
+    padding-inline: 0.06em;
+  }
+  .fade-x {
+    -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@keyframes slide { to { transform: translateX(-50%); } }
